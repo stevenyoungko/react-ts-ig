@@ -1,6 +1,7 @@
 import IGHeader from "components/IGHeader"
 import IGContainer from "components/IGContainer"
-import IGStory from "./components/IGStory";
+import IGStory from "./components/IGStory"
+import IGUser from 'components/IGUser'
 
 const Home: React.FC = () => {
   return (
@@ -12,7 +13,7 @@ const Home: React.FC = () => {
             <IGStory />
           </div>
           <div className="hidden lg:block lg:w-[424px] ">
-            2
+            <IGUser avatar="/images/avatars/a1.png" account="bruce_1234" location="布魯斯前端" showFollow={true} />
           </div>
         </div>
       </IGContainer>

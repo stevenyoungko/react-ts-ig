@@ -1,4 +1,6 @@
 import { memo } from 'react'
+import { useAppDispatch } from "../hooks"
+import { follow, unFollow } from "../slices/friendSlice"
 
 type IGUserProps = {
   size?: "medium" | "small"
@@ -20,15 +22,15 @@ const IGUser: React.FC<IGUserProps> = memo(
     avatar,
     id,
   }) => {
-    // const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch()
 
     function followClickHandler() {
-      // if (id === undefined) return;
-      // if (isFollowing) {
-      //   dispatch(unFollow(id));
-      // } else {
-      //   dispatch(follow(id));
-      // }
+      if (id === undefined) return;
+      if (isFollowing) {
+        dispatch(unFollow(id));
+      } else {
+        dispatch(follow(id));
+      }
     }
 
     return (

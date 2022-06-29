@@ -3,13 +3,20 @@ import IGContainer from "components/IGContainer"
 import IGStory from "./components/IGStory"
 import IGPost from "./components/IGPost"
 import IGProfile from "./components/IGProfile"
-import db from '../../db.json'
+import Loading from "components/Loading"
+import { useGetIGPostsQuery } from "services/homeServices"
+
 
 const IGPostList: React.FC = () => {
-  const data = db.posts
+  const { data, isLoading } = useGetIGPostsQuery("all")
   return (
     <>
-      {
+      {isLoading && (
+        <div className="w-full flex justify-center mt-20">
+          <Loading />
+        </div>
+      )}
+      {!isLoading &&
         data?.map((item) => {
           const {
             id,
@@ -59,4 +66,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Home
